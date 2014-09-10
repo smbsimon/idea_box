@@ -3,14 +3,29 @@ require 'yaml/store'
 class Idea
   attr_reader :title, :description
 
-  def initialize(title, description)
-    @title       = title
-    @description = description
+  def initialize(attributes)
+    @title       = attributes["title"]
+    @description = attributes["description"]
+  end
+
+  def save
+    database.transaction do
+      database['ideas'] ||= []
+      database['ideas'] << {"title" => title, "description" => description}
+    end
+  end
+
+  def database
+    Idea.database
+  end
+
+  def self.database
+    @database ||= YAML::Store.new "ideabox"
   end
 
   def self.all
     raw_ideas.map do |data|
-      new(data[:title], data[:description])
+      Idea.new(data)
     end
   end
 
@@ -20,24 +35,25 @@ class Idea
     end
   end
 
-  def save
-    database.transaction do |db|
-      db['ideas'] ||= []
-      db['ideas'] << {title: title, description: description}
-    end
-  end
-
   def self.delete(position)
     database.transaction do
       database['ideas'].delete_at(position)
     end
   end
 
-  def self.database
-    @database ||= YAML::Store.new "ideabox"
+  def self.find(id)
+    Idea.new(find_raw_idea(id))
   end
 
-  def database
-    Idea.database
+  def self.find_raw_idea(id)
+    database.transaction do
+      database['ideas'].at(id)
+    end
+  end
+
+  def self.update(id, data)
+    database.transaction do
+      database['ideas'][id] = data
+    end
   end
 end
