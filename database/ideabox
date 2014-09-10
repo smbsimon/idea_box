@@ -1,10 +1,2 @@
 ---
-ideas:
-- title: dog
-  description: woof
-  rank: 3
-- title: pig!
-  description: oink
-- title: cat
-  description: meow
-  rank: 1
+ideas: []
