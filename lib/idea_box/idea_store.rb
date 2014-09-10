@@ -2,7 +2,7 @@ require 'yaml/store'
 
 class IdeaStore
   def self.database
-    @database ||= YAML::Store.new "ideabox"
+    @database ||= YAML::Store.new('database/ideabox')
   end
 
   def self.all
