@@ -38,11 +38,29 @@ class IdeaStore
     database.transaction do
       database['ideas'] << data
     end
+    data
   end
 
   def salt_the_earth!
     database.transaction do
       database['ideas'] = []
+    end
+  end
+
+  def find(id)
+    raw_idea = find_raw_idea(id)
+    Idea.new(raw_idea.merge("id" => id))
+  end
+
+  def find_raw_idea(id)
+    database.transaction do
+      database['ideas'].at(id)
+    end
+  end
+
+  def update(id, data)
+    database.transaction do
+      database['ideas'][id] = data
     end
   end
 

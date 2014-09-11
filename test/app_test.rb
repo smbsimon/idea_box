@@ -15,9 +15,12 @@ describe IdeaBoxApp do
     IdeaBoxApp.new
   end
 
+  def idea_store
+    @idea_store ||= IdeaStore.new(IdeaBoxApp.database_path)
+  end
+
   before do
-    IdeaStore.new(IdeaBoxApp.database_path)
-             .salt_the_earth!
+    idea_store.salt_the_earth!
   end
 
   describe 'homepage' do
@@ -47,10 +50,27 @@ describe IdeaBoxApp do
 
   it 'can bump the priority of the tasks' do
     # put two tasks into the db
-    # go to the homepage
-    # bump the bottom one
-    # go to the homepage
-    # the bumped one should be on top
+    idea_store.create 'title'       => "ONE",
+                      'description' => "description",
+                      'rank'        => 1
+    idea_store.create 'title'       => "TWO",
+                      'description' => "description",
+                      'rank'        => 0
+    # higher priority shows up first
+    request = get '/'
+    titles = request.body.scan(/ONE|TWO/)
+    assert_equal ['ONE', 'TWO'], titles
+
+    # bump the bottom one twice
+    post "/1/like"
+    assert_equal 302, last_response.status
+    post "/1/like"
+    assert_equal 302, last_response.status
+
+    # go to the homepage the bumped one should be on top
+    request = get '/'
+    titles = request.body.scan(/ONE|TWO/)
+    assert_equal ['TWO', 'ONE'], titles
   end
 
   it 'can edit tasks'
