@@ -8,10 +8,13 @@ class IdeaBoxApp < Sinatra::Base
     erb :error
   end
 
+  def idea_store
+    @idea_store ||= IdeaStore.new
+  end
+
   # Haven't initialized IdeaStore with any data, so it must internally know how to find ideas
   # :D
   get '/' do
-    idea_store = IdeaStore.new
     erb :index, locals: {
       ideas: idea_store.all.sort,
       idea: Idea.new(params)
@@ -20,7 +23,6 @@ class IdeaBoxApp < Sinatra::Base
 
   # :)
   post '/' do
-    idea_store = IdeaStore.new
     idea_store.create(params[:idea])
     redirect '/'
   end
