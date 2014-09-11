@@ -8,8 +8,11 @@ class IdeaBoxApp < Sinatra::Base
     erb :error
   end
 
+  # "database/ideabox"             # <-- old
+  # "database/ideabox-test"        # <-- new for test
+  # "database/ideabox-development" # <-- new for dev
   def idea_store
-    @idea_store ||= IdeaStore.new
+    @idea_store ||= IdeaStore.new("database/ideabox-#{ENV['RACK_ENV']}")
   end
 
   # Haven't initialized IdeaStore with any data, so it must internally know how to find ideas

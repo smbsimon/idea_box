@@ -11,14 +11,13 @@ require 'yaml/store'
 
 
 class IdeaStore
-  def database
-    return @database if @database
+  attr_reader :database
 
-    @database ||= YAML::Store.new('database/ideabox')
+  def initialize(db_path)
+    @database = YAML::Store.new(db_path)
     @database.transaction do
       @database['ideas'] ||= []
     end
-    @database
   end
 
   def all

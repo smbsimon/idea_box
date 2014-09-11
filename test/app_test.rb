@@ -4,6 +4,8 @@ require 'minitest/pride'
 require 'minitest/spec'
 require 'rack/test'
 
+ENV['RACK_ENV'] = 'test'
+
 require_relative '../lib/app'
 
 describe IdeaBoxApp do
