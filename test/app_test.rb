@@ -15,6 +15,11 @@ describe IdeaBoxApp do
     IdeaBoxApp.new
   end
 
+  before do
+    IdeaStore.new(IdeaBoxApp.database_path)
+             .salt_the_earth!
+  end
+
   describe 'homepage' do
     it "provides user a place to record ideas" do
       get '/'

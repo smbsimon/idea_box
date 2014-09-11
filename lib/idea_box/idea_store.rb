@@ -40,6 +40,12 @@ class IdeaStore
     end
   end
 
+  def salt_the_earth!
+    database.transaction do
+      database['ideas'] = []
+    end
+  end
+
   # Below be class methods!
   def self.database
     return @database if @database
