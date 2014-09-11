@@ -8,30 +8,41 @@ class IdeaBoxApp < Sinatra::Base
     erb :error
   end
 
+  # Haven't initialized IdeaStore with any data, so it must internally know how to find ideas
+  # :D
   get '/' do
-    erb :index, locals: {ideas: IdeaStore.all.sort, idea: Idea.new(params)}
+    idea_store = IdeaStore.new
+    erb :index, locals: {
+      ideas: idea_store.all.sort,
+      idea: Idea.new(params)
+    }
   end
 
+  # :|
   post '/' do
     IdeaStore.create(params[:idea])
     redirect '/'
   end
 
+  # :(
   delete '/:id' do |id|
     IdeaStore.delete(id.to_i)
     redirect '/'
   end
 
+  # :(
   get '/:id/edit' do |id|
     idea = IdeaStore.find(id.to_i)
     erb :edit, locals: {idea: idea}
   end
 
+  # :(
   put '/:id' do |id|
     IdeaStore.update(id.to_i, params[:idea])
     redirect '/'
   end
 
+  # :(
   post '/:id/like' do |id|
     idea = IdeaStore.find(id.to_i)
     idea.like!

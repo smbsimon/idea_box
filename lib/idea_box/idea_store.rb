@@ -1,6 +1,41 @@
 require 'yaml/store'
 
+# reimplement all class methods as instance methods
+# (without breaking anything ;)
+#
+# Inject the data necessary to connect to the database
+#
+# Determine what it is from the ENV['RACK_ENV']
+#
+# Write unit tests on IdeaStore
+
+
 class IdeaStore
+  def database
+    return @database if @database
+
+    @database ||= YAML::Store.new('database/ideabox')
+    @database.transaction do
+      @database['ideas'] ||= []
+    end
+    @database
+  end
+
+  def all
+    ideas = []
+    raw_ideas.each_with_index do |data, i|
+      ideas << Idea.new(data.merge("id" => i))
+    end
+    ideas
+  end
+
+  def raw_ideas
+    database.transaction do |db|
+      db['ideas'] || []
+    end
+  end
+
+  # Below be class methods!
   def self.database
     return @database if @database
 
