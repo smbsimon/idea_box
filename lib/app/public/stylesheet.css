@@ -1,5 +1,5 @@
 body {
-	background-color: snow;
+	background-color: seashell;
 	font-family: Garamond, serif;
 	margin-bottom: 120px;
 }
@@ -44,6 +44,12 @@ div p {
 	font-family: Garamond, serif;
 	font-size: 20px;
 	color: #8B668B;
+}
+
+input[type="submit"] {
+  background: seashell;
+	color: #8B668B;
+  border: 1px solid #8B668B;
 }
 
 footer {

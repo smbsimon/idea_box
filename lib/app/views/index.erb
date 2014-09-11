@@ -15,7 +15,7 @@
       <% ideas.each do |idea| %>
         <li>
           <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
-            <input type='submit' value="+"/>
+            <input type='submit' value="bump"/>
           </form>
           <span><%= idea.title %><br/></span>
                 <%= idea.description %>
