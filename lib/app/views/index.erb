@@ -5,7 +5,7 @@
     <p>what is there to do?</p>
     <input type='text' placeholder='task' name='idea[title]'/>
     <input type='text' placeholder='description' name='idea[description]'/>
-    <input type='submit'/>
+    <input type='submit' value='submit'/ class='submit-idea'>
   </form>
 </div>
 
@@ -13,18 +13,24 @@
   <p>yet to be to-done:</p>
     <ul>
       <% ideas.each do |idea| %>
+
         <li>
-          <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
-            <input type='submit' value="bump"/>
-          </form>
           <span><%= idea.title %><br/></span>
                 <%= idea.description %>
-          <a href="/<%= idea.id %>/edit">edit</a>
-          <form action="/<%= idea.id %>" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="done"/>
+
+          <br>
+          <a href="/<%= idea.id %>/edit" class="button">edit</a>
+
+          <form action='/<%= idea.id %>/like' method='POST' style='display:inline'>
+            <input type='submit' value='bump'/>
+          </form>
+
+          <form action='/<%= idea.id %>' method='POST' class='idea-action'>
+            <input type='hidden' name='_method' value='DELETE'>
+            <input type='submit' value='done'/>
           </form>
         </li>
+
       <% end %>
     </ul>
 </div>

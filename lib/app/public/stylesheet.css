@@ -21,6 +21,7 @@ ul {
 }
 
 li {
+	padding: 3px;
 	font-size: 15px;
 	color: #8B668B;
 	width: 200px;
@@ -46,18 +47,43 @@ div p {
 	color: #8B668B;
 }
 
-input[type="submit"] {
+input[type="submit"], .button {
+	font-family: '.LucidaGrandeUI';
+	font-size: 11px;
+	padding: 5px;
+	text-decoration: none;
   background: seashell;
 	color: #8B668B;
   border: 1px solid #8B668B;
 }
 
+.idea-action {
+	display: inline-block;
+}
+
 footer {
   text-align: center;
 	position: fixed;
-  bottom: 0;
-  left: 0;
+  bottom: 0px;
   height: 30px;
   width: 100%;
 	color: #8B668B;
+}
+
+#main input {
+	max-width: 40%;
+}
+
+#main p {
+	margin: 0;
+}
+
+.submit-idea {
+	display: block;
+}
+
+@media (max-width: 885px) {
+  footer {
+    display: none;
+  }
 }

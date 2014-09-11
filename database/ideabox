@@ -5,18 +5,18 @@ ideas:
   rank: 3
 - title: html/css
   description: review all this stuff, yo. it is hard!
-  rank: 2
-- title: call dad
-  description: stop being a bad daughter, sara
+  rank: 3
 - title: clean apartment
   description: vacuum, clean fridge, wipe counters, etc.
   rank: 2
 - title: write to gabrielle
   description: she has been waiting for months. also, she sent a bottle of wine. she
     deserves a letter.
+  rank: 1
 - title: baby hem
   description: finish long-form post for gaudy blog
   rank: 1
 - title: fruit salad
-  description: for delicious turing family friday breakfast
-  rank: 1
+  description: for delicious turing family friday breakfast yum
+- title: call dad
+  description: stop being a bad daughter, sara
