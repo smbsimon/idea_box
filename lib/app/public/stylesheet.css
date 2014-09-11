@@ -49,6 +49,7 @@ div p {
 
 input[type="submit"], .button {
 	font-family: '.LucidaGrandeUI';
+	margin: 2px;
 	font-size: 11px;
 	padding: 3px;
 	text-decoration: none;
