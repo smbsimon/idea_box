@@ -50,7 +50,7 @@ div p {
 input[type="submit"], .button {
 	font-family: '.LucidaGrandeUI';
 	font-size: 11px;
-	padding: 5px;
+	padding: 3px;
 	text-decoration: none;
   background: seashell;
 	color: #8B668B;

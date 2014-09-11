@@ -1,7 +1,7 @@
 ---
 ideas:
 - title: lightning talk prep
-  description: finish slides, finish rough draft, show jorge
+  description: finish slides, finish rough draft, show jorge, practice
   rank: 3
 - title: html/css
   description: review all this stuff, yo. it is hard!
@@ -18,5 +18,6 @@ ideas:
   rank: 1
 - title: fruit salad
   description: for delicious turing family friday breakfast yum
+  rank: 2
 - title: call dad
   description: stop being a bad daughter, sara
