@@ -1,3 +1,57 @@
 body {
-	background-color: #b7d1c4
+	background-color: snow;
+	font-family: Garamond, serif;
+	margin-bottom: 120px;
+}
+
+h1 {
+	width: 300px;
+	font-size: 46px;
+	color: #8B668B;
+	margin: 0px 0px 10px 10px;
+	padding: 10px;
+	border-top: 1px solid #8B668B;
+	border-bottom: 1px solid #8B668B;
+}
+
+ul {
+	font-size: 15px;
+	color: #8B668B;
+	width: 200px;
+}
+
+li {
+	font-size: 15px;
+	color: #8B668B;
+	width: 200px;
+}
+
+span {
+	font-weight: bold;
+}
+
+div {
+	width: 300px;
+	font-size: 46px;
+	color: #8B668B;
+	margin: 0px 0px 10px 10px;
+	padding: 10px;
+	border-top: 1px solid #8B668B;
+	border-bottom: 1px solid #8B668B;
+}
+
+div p {
+	font-family: Garamond, serif;
+	font-size: 20px;
+	color: #8B668B;
+}
+
+footer {
+  text-align: center;
+	position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 30px;
+  width: 100%;
+	color: #8B668B;
 }
