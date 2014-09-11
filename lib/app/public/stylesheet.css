@@ -1,5 +1,5 @@
 body {
-	background-color: seashell;
+	background-color: snow;
 	font-family: Garamond, serif;
 	margin-bottom: 120px;
 }
@@ -52,7 +52,7 @@ input[type="submit"], .button {
 	font-size: 11px;
 	padding: 3px;
 	text-decoration: none;
-  background: seashell;
+  background: snow;
 	color: #8B668B;
   border: 1px solid #8B668B;
 }
