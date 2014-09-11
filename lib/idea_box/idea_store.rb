@@ -35,6 +35,12 @@ class IdeaStore
     end
   end
 
+  def create(data)
+    database.transaction do
+      database['ideas'] << data
+    end
+  end
+
   # Below be class methods!
   def self.database
     return @database if @database
