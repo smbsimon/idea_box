@@ -4,7 +4,7 @@ require 'minitest/pride'
 require 'minitest/spec'
 require 'rack/test'
 
-require_relative './lib/app'
+require_relative '../lib/app'
 
 describe IdeaBoxApp do
   include Rack::Test::Methods
@@ -16,6 +16,8 @@ describe IdeaBoxApp do
   it "provides user a place to record ideas" do
     get '/'
     assert_equal 200, last_response.status
+    # assert the form is on the page,
+    # and the names look like the data that I'm posting
     assert last_response.ok?
   end
 
@@ -25,7 +27,8 @@ describe IdeaBoxApp do
   end
 
   it "stores ideas and descriptions after entered on form" do
-    post '/', idea: { title: "test-idea", description: "test-description" }
+    post '/', idea: { title: "test-idea",
+                      description: "test-description" }
     follow_redirect!
     assert last_response.ok?
     assert last_response.body.include? "test-idea"
