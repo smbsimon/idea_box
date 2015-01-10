@@ -18,5 +18,4 @@ After completing this tutorial you should be able to:
 
 ## Still To-Do
 
-- stylesheet for edit page
-- tiny space difference between the three buttons
+- standardize styles and rework to fit html/css best practices
